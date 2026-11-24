@@ -6,6 +6,8 @@
 #include "hashtable.h"
 #include "stack.h"
 #include "queue.h"
+#include "tree.h"
+#include "graph.h"
 #include "utils.h"
 
 static void showMainMenu(const char *username, ItemList *items,
@@ -19,8 +21,8 @@ static void showMainMenu(const char *username, ItemList *items,
         printf("7. Cari ID (binary)\n8. Cari ID (hash table)\n");
         printf("-- Undo & Pesanan --\n9. Undo perubahan stok\n10. Lihat riwayat undo\n");
         printf("11. Tambah pesanan ke antrean\n12. Proses pesanan berikutnya\n");
-        printf("13. Lihat antrean pesanan\n0. Logout\n");
-        choice = readInt("Pilih: ", 0, 13);
+        printf("13. Lihat antrean pesanan\n14. Katalog BST (tree)\n15. Graph relasi item (BFS/DFS)\n0. Logout\n");
+        choice = readInt("Pilih: ", 0, 15);
         switch (choice) {
             case 1: if (addItem(items)) { saveItems(items); } break;
             case 2: displayItems(items); break;
@@ -35,6 +37,8 @@ static void showMainMenu(const char *username, ItemList *items,
             case 11: addOrder(items, orders); break;
             case 12: if (processNextOrder(items, orders)) { saveItems(items); } break;
             case 13: showOrderQueue(orders); break;
+            case 14: if (runTreeMenu(items)) { saveItems(items); } break;
+            case 15: runGraphMenu(items); break;
             default: break;
         }
     } while (choice != 0);
