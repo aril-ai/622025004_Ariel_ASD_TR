@@ -30,4 +30,6 @@ void displayItems(const ItemList *list);
 int updateStock(ItemList *list);
 int deleteItem(ItemList *list);
 
+int findIndexById(const ItemList *list, int id);
+
 #endif

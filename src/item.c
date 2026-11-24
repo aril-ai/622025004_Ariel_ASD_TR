@@ -45,7 +45,7 @@ static int nextItemId(const ItemList *list) {
     return maxId + 1;
 }
 
-static int findIndexById(const ItemList *list, int id) {
+int findIndexById(const ItemList *list, int id) {
     int i;
     for (i = 0; i < list->count; i++) {
         if (list->data[i].id == id) {
